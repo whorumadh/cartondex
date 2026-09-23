@@ -1,5 +1,5 @@
 // ==============================================================================
-// 🧬 TIPOS E INTERFACES DEL BESTIARIO POKÉMON TCG
+// TIPOS E INTERFACES DEL BESTIARIO POKÉMON TCG
 // ==============================================================================
 
 export type HorrorCategoryName =
@@ -16,7 +16,6 @@ export type HorrorCategoryName =
 export interface HorrorCategoryInfo {
   id: string;
   name: HorrorCategoryName;
-  icon: string;
   countGen1: number;
   colorBorder: string;
   colorBg: string;

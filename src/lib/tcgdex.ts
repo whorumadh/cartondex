@@ -1,5 +1,5 @@
 // ==============================================================================
-// 🃏 CLIENTE TCGDEX API (EN, ES, ZH) CON COTIZACIONES DE TCGPLAYER & CARDMARKET
+//  CLIENTE TCGDEX API (EN, ES, ZH) CON COTIZACIONES DE TCGPLAYER & CARDMARKET
 // ==============================================================================
 
 import { TcgCardBrief, TcgCardDetail, TcgLanguage } from '@/types';

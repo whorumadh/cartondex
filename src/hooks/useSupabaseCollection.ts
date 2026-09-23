@@ -1,5 +1,5 @@
 // ==============================================================================
-// 📦 HOOK useSupabaseCollection — GESTIÓN DE COLECCIÓN EN SUPABASE (POSTGRESQL)
+//  HOOK useSupabaseCollection — GESTIÓN DE COLECCIÓN EN SUPABASE (POSTGRESQL)
 // ==============================================================================
 
 'use client';

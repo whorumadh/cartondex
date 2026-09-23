@@ -1,5 +1,5 @@
 // ==============================================================================
-// 🏷️ FILTROS POR CATEGORÍA DE HORROR Y ESTADO DE COLECCIÓN
+// ️ FILTROS POR CATEGORÍA DE HORROR Y ESTADO DE COLECCIÓN
 // ==============================================================================
 
 'use client';
@@ -49,7 +49,7 @@ export function CategoryFilters({
               onClick={() => onSearchChange('')}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-zinc-400 hover:text-white"
             >
-              ✕
+              X
             </button>
           )}
         </div>
@@ -124,7 +124,6 @@ export function CategoryFilters({
                   : 'bg-zinc-950/80 border-zinc-800/80 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'
               }`}
             >
-              <span>{cat.icon}</span>
               <span>{cat.name}</span>
               <span
                 className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full border ${

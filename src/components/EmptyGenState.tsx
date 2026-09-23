@@ -1,5 +1,5 @@
 // ==============================================================================
-// 📭 ESTADO VACÍO PARA GENERACIONES 2 A 9 (SIN PRELLENADO SEGÚN INDICACIÓN)
+//  ESTADO VACÍO PARA GENERACIONES 2 A 9 (SIN PRELLENADO SEGÚN INDICACIÓN)
 // ==============================================================================
 
 'use client';

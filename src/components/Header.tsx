@@ -1,5 +1,5 @@
 // ==============================================================================
-// 🧭 HEADER DEL BESTIARIO CON ESTADÍSTICAS GLOBALES (USD & MXN)
+//  HEADER DEL BESTIARIO CON ESTADÍSTICAS GLOBALES (USD & MXN)
 // ==============================================================================
 
 'use client';

@@ -1,5 +1,5 @@
 // ==============================================================================
-// 🎴 MODAL DE SELECCIÓN DE TARJETAS TCG (EN, ES, ZH) CON FILTROS Y PRECIOS EN VIVO
+//  MODAL DE SELECCIÓN DE TARJETAS TCG (EN, ES, ZH) CON FILTROS Y PRECIOS EN VIVO
 // ==============================================================================
 
 'use client';
@@ -35,11 +35,11 @@ interface CardSelectorModalProps {
   onUnassignCard: (specimenId: string) => void;
 }
 
-const LANGUAGES: { code: TcgLanguage; label: string; flag: string }[] = [
-  { code: 'en', label: 'English', flag: '🇬🇧' },
-  { code: 'es', label: 'Español', flag: '🇪🇸' },
-  { code: 'zh-tw', label: '中文 (繁體)', flag: '🇨🇳' },
-  { code: 'zh-cn', label: '中文 (简体)', flag: '🇨🇳' },
+const LANGUAGES: { code: TcgLanguage; label: string }[] = [
+  { code: 'en', label: 'English' },
+  { code: 'es', label: 'Español' },
+  { code: 'zh-tw', label: '中文 (繁體)' },
+  { code: 'zh-cn', label: '中文 (简体)' },
 ];
 
 export function CardSelectorModal({
@@ -169,13 +169,12 @@ export function CardSelectorModal({
               <button
                 key={lang.code}
                 onClick={() => setLanguage(lang.code)}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium transition cursor-pointer ${
+                className={`flex items-center px-2.5 py-1 rounded-lg text-xs font-medium transition cursor-pointer ${
                   language === lang.code
                     ? 'bg-zinc-800 text-white font-bold shadow-sm border border-zinc-700'
                     : 'text-zinc-400 hover:text-zinc-200'
                 }`}
               >
-                <span>{lang.flag}</span>
                 <span>{lang.label}</span>
               </button>
             ))}

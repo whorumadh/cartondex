@@ -1,5 +1,5 @@
 // ==============================================================================
-// 📖 PÁGINA PRINCIPAL: LANDING PAGE & TRACKER DEL BESTIARIO POKÉMON TCG
+//  PÁGINA PRINCIPAL: LANDING PAGE & TRACKER DEL BESTIARIO POKÉMON TCG
 // ==============================================================================
 
 'use client';

@@ -1,5 +1,5 @@
 // ==============================================================================
-// 🃏 HOOK useTcgCards — CONSULTA Y FILTRADO DE TARJETAS TCGDEX (EN, ES, ZH)
+//  HOOK useTcgCards — CONSULTA Y FILTRADO DE TARJETAS TCGDEX (EN, ES, ZH)
 // ==============================================================================
 
 'use client';

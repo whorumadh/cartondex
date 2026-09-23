@@ -1,5 +1,5 @@
 // ==============================================================================
-// 🃏 CARD DE ESPÉCIMEN DEL BESTIARIO CON CHECKBOX DIRECTO Y PRECIOS TCG
+//  CARD DE ESPÉCIMEN DEL BESTIARIO CON CHECKBOX DIRECTO Y PRECIOS TCG
 // ==============================================================================
 
 'use client';
@@ -145,9 +145,8 @@ export function PokemonCard({
           {/* Badge de Categoría de Horror */}
           <div className="mt-2">
             <span
-              className={`inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-lg border ${categoryInfo?.colorBg} ${categoryInfo?.colorBorder} ${categoryInfo?.colorText}`}
+              className={`inline-flex items-center text-[11px] font-medium px-2.5 py-1 rounded-lg border ${categoryInfo?.colorBg} ${categoryInfo?.colorBorder} ${categoryInfo?.colorText}`}
             >
-              <span>{categoryInfo?.icon}</span>
               <span className="truncate">{specimen.category}</span>
             </span>
           </div>

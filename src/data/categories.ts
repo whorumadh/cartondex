@@ -1,5 +1,5 @@
 // ==============================================================================
-// 🧭 CATEGORÍAS TEMÁTICAS DE HORROR POKÉMON (GEN 1) — BASADAS EN AGENTS.MD
+// CATEGORIAS TEMATICAS DE HORROR POKEMON (GEN 1) - BASADAS EN AGENTS.MD
 // ==============================================================================
 
 import { HorrorCategoryInfo, HorrorCategoryName } from '@/types';
@@ -8,7 +8,6 @@ export const HORROR_CATEGORIES: Record<HorrorCategoryName, HorrorCategoryInfo> =
   'Ancestro Común': {
     id: 'ancestro-comun',
     name: 'Ancestro Común',
-    icon: '🧬',
     countGen1: 1,
     colorBorder: 'border-pink-500/50',
     colorBg: 'bg-pink-950/30',
@@ -20,7 +19,6 @@ export const HORROR_CATEGORIES: Record<HorrorCategoryName, HorrorCategoryInfo> =
   'Depredación Voraz & Carnicería': {
     id: 'depredacion-carniceria',
     name: 'Depredación Voraz & Carnicería',
-    icon: '🩸',
     countGen1: 19,
     colorBorder: 'border-red-500/50',
     colorBg: 'bg-red-950/30',
@@ -32,7 +30,6 @@ export const HORROR_CATEGORIES: Record<HorrorCategoryName, HorrorCategoryInfo> =
   'Horror Corporal & Mutación': {
     id: 'horror-corporal-mutacion',
     name: 'Horror Corporal & Mutación',
-    icon: '☣️',
     countGen1: 8,
     colorBorder: 'border-orange-500/50',
     colorBg: 'bg-orange-950/30',
@@ -44,7 +41,6 @@ export const HORROR_CATEGORIES: Record<HorrorCategoryName, HorrorCategoryInfo> =
   'Horror Psíquico & Predación Mental': {
     id: 'horror-psiquico-predacion-mental',
     name: 'Horror Psíquico & Predación Mental',
-    icon: '🧠',
     countGen1: 3,
     colorBorder: 'border-purple-500/50',
     colorBg: 'bg-purple-950/30',
@@ -56,7 +52,6 @@ export const HORROR_CATEGORIES: Record<HorrorCategoryName, HorrorCategoryInfo> =
   'Manifestación Espectral & Maldición': {
     id: 'manifestacion-espectral-maldicion',
     name: 'Manifestación Espectral & Maldición',
-    icon: '👻',
     countGen1: 8,
     colorBorder: 'border-violet-500/50',
     colorBg: 'bg-violet-950/30',
@@ -68,7 +63,6 @@ export const HORROR_CATEGORIES: Record<HorrorCategoryName, HorrorCategoryInfo> =
   'Origen Cósmico & Ultraterreno': {
     id: 'origen-cosmico-ultraterreno',
     name: 'Origen Cósmico & Ultraterreno',
-    icon: '🌌',
     countGen1: 3,
     colorBorder: 'border-cyan-500/50',
     colorBg: 'bg-cyan-950/30',
@@ -80,7 +74,6 @@ export const HORROR_CATEGORIES: Record<HorrorCategoryName, HorrorCategoryInfo> =
   'Parasitismo & Simbiosis Hostil': {
     id: 'parasitismo-simbiosis-hostil',
     name: 'Parasitismo & Simbiosis Hostil',
-    icon: '🍄',
     countGen1: 4,
     colorBorder: 'border-lime-500/50',
     colorBg: 'bg-lime-950/30',
@@ -92,7 +85,6 @@ export const HORROR_CATEGORIES: Record<HorrorCategoryName, HorrorCategoryInfo> =
   'Toxicidad & Polución Letal': {
     id: 'toxicidad-polucion-letal',
     name: 'Toxicidad & Polución Letal',
-    icon: '🧪',
     countGen1: 9,
     colorBorder: 'border-emerald-500/50',
     colorBg: 'bg-emerald-950/30',
@@ -104,7 +96,6 @@ export const HORROR_CATEGORIES: Record<HorrorCategoryName, HorrorCategoryInfo> =
   'Tragedia Biológica & Fatalidad': {
     id: 'tragedia-biologica-fatalidad',
     name: 'Tragedia Biológica & Fatalidad',
-    icon: '☠️',
     countGen1: 8,
     colorBorder: 'border-slate-500/50',
     colorBg: 'bg-slate-900/40',

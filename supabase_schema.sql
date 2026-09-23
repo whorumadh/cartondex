@@ -1,5 +1,5 @@
 -- ==============================================================================
--- 📜 SCRIPT DE BASE DE DATOS SUPABASE — BESTIARIO POKÉMON TCG
+--  SCRIPT DE BASE DE DATOS SUPABASE — BESTIARIO POKÉMON TCG
 -- ==============================================================================
 -- Instrucciones de instalación:
 -- 1. Ve a tu proyecto en Supabase (https://supabase.com/dashboard)

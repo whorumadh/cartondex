@@ -1,5 +1,5 @@
 // ==============================================================================
-// 📋 CATÁLOGO OFICIAL DE ESPECÍMENES DE HORROR (GEN 1) — BASADO EN AGENTS.MD
+//  CATÁLOGO OFICIAL DE ESPECÍMENES DE HORROR (GEN 1) — BASADO EN AGENTS.MD
 // ==============================================================================
 
 import { Specimen } from '@/types';
@@ -131,12 +131,12 @@ export const GEN1_SPECIMENS: Specimen[] = [
     officialArtworkUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/28.png',
     spriteUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/28.png',
   },
-  // 10. Nidoran♀
+  // 10. Nidoran F
   {
     id: '0029',
     dexNumber: 29,
     formattedId: '#0029',
-    name: 'Nidoran♀',
+    name: 'Nidoran F',
     category: 'Toxicidad & Polución Letal',
     types: ['Poison'],
     generation: 1,

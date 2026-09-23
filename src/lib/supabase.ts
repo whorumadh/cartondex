@@ -1,5 +1,5 @@
 // ==============================================================================
-// ⚡ CLIENTE DE SUPABASE (POSTGRESQL CLOUD) — SINGLETON
+//  CLIENTE DE SUPABASE (POSTGRESQL CLOUD) — SINGLETON
 // ==============================================================================
 
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
