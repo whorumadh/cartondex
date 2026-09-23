@@ -78,6 +78,11 @@ ON public.collection_items
 FOR DELETE 
 USING (true);
 
+-- 6. Otorgar permisos a los roles anon y authenticated de Supabase (Evita error 42501)
+GRANT USAGE ON SCHEMA public TO anon, authenticated;
+GRANT ALL ON TABLE public.collection_items TO anon, authenticated;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO anon, authenticated;
+
 -- 6. Trigger automático para actualizar el campo updated_at al modificar un registro
 CREATE OR REPLACE FUNCTION public.handle_updated_at()
 RETURNS TRIGGER AS $$

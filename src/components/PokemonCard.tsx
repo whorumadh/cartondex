@@ -16,6 +16,7 @@ interface PokemonCardProps {
   collectionItem?: CollectionItem;
   onToggleOwned: (specimenId: string, currentOwned: boolean) => void;
   onOpenCardModal: (specimen: Specimen) => void;
+  isPriority?: boolean;
 }
 
 // Colores según tipo elemental
@@ -42,6 +43,7 @@ export function PokemonCard({
   collectionItem,
   onToggleOwned,
   onOpenCardModal,
+  isPriority = false,
 }: PokemonCardProps) {
   const isOwned = !!collectionItem?.owned;
   const categoryInfo = HORROR_CATEGORIES[specimen.category];
@@ -112,7 +114,8 @@ export function PokemonCard({
             fill
             sizes="(max-width: 768px) 160px, 160px"
             className="object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.6)]"
-            loading="lazy"
+            priority={isPriority}
+            loading={isPriority ? undefined : 'lazy'}
           />
         </div>
       </div>
