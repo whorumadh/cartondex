@@ -91,12 +91,12 @@ export function CategoryFilters({
         </div>
       </div>
 
-      {/* Chips de Categorías de Horror */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none pt-1">
+      {/* Chips de Categorías de Horror (con salto de línea / flex-wrap) */}
+      <div className="flex flex-wrap items-center gap-2 pt-1">
         {/* Botón Todas */}
         <button
           onClick={() => onSelectCategory('all')}
-          className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border whitespace-nowrap transition cursor-pointer shrink-0 ${
+          className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border whitespace-nowrap transition cursor-pointer ${
             selectedCategory === 'all'
               ? 'bg-zinc-100 text-zinc-950 border-white font-bold shadow-md'
               : 'bg-zinc-950/80 border-zinc-800/80 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'
@@ -118,7 +118,7 @@ export function CategoryFilters({
             <button
               key={cat.id}
               onClick={() => onSelectCategory(cat.name)}
-              className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium border whitespace-nowrap transition cursor-pointer shrink-0 ${
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium border whitespace-nowrap transition cursor-pointer ${
                 isSelected
                   ? `${cat.colorBg} ${cat.colorBorder} ${cat.colorText} ring-1 ring-current shadow-lg`
                   : 'bg-zinc-950/80 border-zinc-800/80 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'

@@ -43,7 +43,7 @@ export function GenerationSelector({ currentGen, onSelectGen }: GenerationSelect
         </span>
       </div>
 
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+      <div className="flex flex-wrap items-center gap-2 pb-2">
         {GENERATIONS.map((g) => {
           const isActive = currentGen === g.gen;
           const isComplete = g.activeSpecimensCount > 0;
