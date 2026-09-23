@@ -34,7 +34,6 @@ CREATE TABLE IF NOT EXISTS public.collection_items (
     
     -- Cotización de mercado al momento del registro
     price_usd NUMERIC(10, 2),              -- Precio TCGPlayer Market / Normal / Holo en USD
-    price_eur NUMERIC(10, 2),              -- Precio Cardmarket Trend en EUR
     
     -- Anotaciones personales y timestamps
     notes TEXT,                            -- Notas (ej: "Near Mint", "Firmada", "Caja 1")
@@ -50,38 +49,45 @@ CREATE INDEX IF NOT EXISTS idx_collection_items_owned ON public.collection_items
 -- 4. Habilitar Row Level Security (RLS)
 ALTER TABLE public.collection_items ENABLE ROW LEVEL SECURITY;
 
--- 5. Políticas de Acceso (Permitir lectura y modificación con la anon key para uso personal del binder)
--- Si en el futuro agregas autenticación con usuarios de Supabase, puedes restringir por auth.uid()
-
+-- 5. Políticas de Acceso
+-- Lectura pública: Cualquier visitante puede ver la colección
 DROP POLICY IF EXISTS "Permitir lectura publica de la coleccion" ON public.collection_items;
 CREATE POLICY "Permitir lectura publica de la coleccion" 
 ON public.collection_items 
 FOR SELECT 
 USING (true);
 
+-- Modificación protegida: Solo usuarios autenticados en Supabase (Administrador) pueden modificar
+DROP POLICY IF EXISTS "Permitir insercion solo a usuarios autenticados" ON public.collection_items;
 DROP POLICY IF EXISTS "Permitir insercion de items de la coleccion" ON public.collection_items;
-CREATE POLICY "Permitir insercion de items de la coleccion" 
+CREATE POLICY "Permitir insercion solo a usuarios autenticados" 
 ON public.collection_items 
 FOR INSERT 
-WITH CHECK (true);
+TO authenticated 
+WITH CHECK (auth.role() = 'authenticated');
 
+DROP POLICY IF EXISTS "Permitir actualizacion solo a usuarios autenticados" ON public.collection_items;
 DROP POLICY IF EXISTS "Permitir actualizacion de items de la coleccion" ON public.collection_items;
-CREATE POLICY "Permitir actualizacion de items de la coleccion" 
+CREATE POLICY "Permitir actualizacion solo a usuarios autenticados" 
 ON public.collection_items 
 FOR UPDATE 
-USING (true)
-WITH CHECK (true);
+TO authenticated 
+USING (auth.role() = 'authenticated')
+WITH CHECK (auth.role() = 'authenticated');
 
+DROP POLICY IF EXISTS "Permitir eliminacion solo a usuarios autenticados" ON public.collection_items;
 DROP POLICY IF EXISTS "Permitir eliminacion de items de la coleccion" ON public.collection_items;
-CREATE POLICY "Permitir eliminacion de items de la coleccion" 
+CREATE POLICY "Permitir eliminacion solo a usuarios autenticados" 
 ON public.collection_items 
 FOR DELETE 
-USING (true);
+TO authenticated 
+USING (auth.role() = 'authenticated');
 
--- 6. Otorgar permisos a los roles anon y authenticated de Supabase (Evita error 42501)
+-- 6. Otorgar permisos a los roles de Supabase (Lectura para anon, escritura para authenticated)
 GRANT USAGE ON SCHEMA public TO anon, authenticated;
-GRANT ALL ON TABLE public.collection_items TO anon, authenticated;
-GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO anon, authenticated;
+GRANT SELECT ON TABLE public.collection_items TO anon;
+GRANT ALL ON TABLE public.collection_items TO authenticated;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO authenticated;
 
 -- 6. Trigger automático para actualizar el campo updated_at al modificar un registro
 CREATE OR REPLACE FUNCTION public.handle_updated_at()

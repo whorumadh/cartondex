@@ -33,6 +33,7 @@ interface CardSelectorModalProps {
   onClose: () => void;
   onAssignCard: (specimenId: string, cardData: Partial<CollectionItem>) => void;
   onUnassignCard: (specimenId: string) => void;
+  canEdit?: boolean;
 }
 
 const LANGUAGES: { code: TcgLanguage; label: string }[] = [
@@ -49,6 +50,7 @@ export function CardSelectorModal({
   onClose,
   onAssignCard,
   onUnassignCard,
+  canEdit = false,
 }: CardSelectorModalProps) {
   const initialLanguage = (collectionItem?.language as TcgLanguage) || 'en';
 
@@ -299,40 +301,53 @@ export function CardSelectorModal({
                   </div>
                 </div>
 
-                {/* Botón de Acción para Vincular */}
+                {/* Botón de Acción para Vincular (Solo si es Administrador) */}
                 <div className="w-full pt-2">
-                  {isCurrentCardBound ? (
-                    <div className="space-y-2">
-                      <div className="p-2.5 rounded-xl bg-emerald-950/70 border border-emerald-500/50 flex items-center justify-center gap-2 text-xs font-bold text-emerald-300">
-                        <BookmarkCheck className="w-4 h-4 text-emerald-400" />
-                        Tarjeta fijada en tu Binder
+                  {canEdit ? (
+                    isCurrentCardBound ? (
+                      <div className="space-y-2">
+                        <div className="p-2.5 rounded-xl bg-emerald-950/70 border border-emerald-500/50 flex items-center justify-center gap-2 text-xs font-bold text-emerald-300">
+                          <BookmarkCheck className="w-4 h-4 text-emerald-400" />
+                          Tarjeta fijada en tu Binder
+                        </div>
+                        <button
+                          onClick={handleUnassign}
+                          disabled={saving}
+                          className="w-full py-2 text-xs text-zinc-400 hover:text-red-400 border border-zinc-800 hover:border-red-900 rounded-xl transition cursor-pointer"
+                        >
+                          {saving ? 'Desvinculando...' : 'Desvincular esta tarjeta'}
+                        </button>
                       </div>
+                    ) : (
                       <button
-                        onClick={handleUnassign}
+                        onClick={handleSaveSelection}
                         disabled={saving}
-                        className="w-full py-2 text-xs text-zinc-400 hover:text-red-400 border border-zinc-800 hover:border-red-900 rounded-xl transition cursor-pointer"
+                        className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition shadow-lg shadow-emerald-950/50 cursor-pointer disabled:opacity-50"
                       >
-                        {saving ? 'Desvinculando...' : 'Desvincular esta tarjeta'}
+                        {saving ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                            <span>Guardando en Supabase...</span>
+                          </>
+                        ) : (
+                          <>
+                            <CheckCircle className="w-4 h-4" />
+                            <span>Vincular esta Tarjeta a mi Binder</span>
+                          </>
+                        )}
                       </button>
-                    </div>
+                    )
                   ) : (
-                    <button
-                      onClick={handleSaveSelection}
-                      disabled={saving}
-                      className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition shadow-lg shadow-emerald-950/50 cursor-pointer disabled:opacity-50"
-                    >
-                      {saving ? (
-                        <>
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                          <span>Guardando en Supabase...</span>
-                        </>
-                      ) : (
-                        <>
-                          <CheckCircle className="w-4 h-4" />
-                          <span>Vincular esta Tarjeta a mi Binder</span>
-                        </>
-                      )}
-                    </button>
+                    isCurrentCardBound ? (
+                      <div className="p-2.5 rounded-xl bg-emerald-950/70 border border-emerald-500/50 text-center text-xs font-bold text-emerald-300 flex items-center justify-center gap-2">
+                        <BookmarkCheck className="w-4 h-4 text-emerald-400" />
+                        Tarjeta registrada en este Bestiario
+                      </div>
+                    ) : (
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 text-center text-xs text-zinc-500">
+                        Modo de consulta publica (solo lectura)
+                      </div>
+                    )
                   )}
                 </div>
               </>

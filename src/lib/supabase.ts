@@ -1,5 +1,5 @@
 // ==============================================================================
-//  CLIENTE DE SUPABASE (POSTGRESQL CLOUD) — SINGLETON
+// CLIENTE DE SUPABASE (POSTGRESQL CLOUD) — SINGLETON CON AUTH
 // ==============================================================================
 
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
@@ -27,8 +27,8 @@ export const getSupabaseClient = (): SupabaseClient | null => {
   if (!clientInstance) {
     clientInstance = createClient(supabaseUrl, supabaseAnonKey, {
       auth: {
-        persistSession: false, // Binder personal público sin auth de sesiones de usuario para evitar advertencias de storage
-        autoRefreshToken: false,
+        persistSession: true,
+        autoRefreshToken: true,
       },
     });
   }

@@ -1,26 +1,26 @@
-# 🩸 Pokémon de Horror — Gen 1
+# Pokémon de Horror — Gen 1
 > Clasificación de especímenes de horror de la Generación 1 por categoría temática (orden alfabético).
 
 ---
 
-## 📊 Resumen por Categoría
+##  Resumen por Categoría
 
 | Categoría | Conteo |
 |---|:---:|
-| 🧬 **Ancestro Común** | 1 |
-| 🩸 **Depredación Voraz & Carnicería** | 19 |
-| 🧬 **Horror Corporal & Mutación** | 8 |
-| 🧠 **Horror Psíquico & Predación Mental** | 3 |
-| 👻 **Manifestación Espectral & Maldición** | 8 |
-| 🌌 **Origen Cósmico & Ultraterreno** | 3 |
-| 🍄 **Parasitismo & Simbiosis Hostil** | 4 |
-| ☣️ **Toxicidad & Polución Letal** | 9 |
-| ☠️ **Tragedia Biológica & Fatalidad** | 8 |
+|  **Ancestro Común** | 1 |
+|  **Depredación Voraz & Carnicería** | 19 |
+|  **Horror Corporal & Mutación** | 8 |
+|  **Horror Psíquico & Predación Mental** | 3 |
+|  **Manifestación Espectral & Maldición** | 8 |
+|  **Origen Cósmico & Ultraterreno** | 3 |
+|  **Parasitismo & Simbiosis Hostil** | 4 |
+|  **Toxicidad & Polución Letal** | 9 |
+|  **Tragedia Biológica & Fatalidad** | 8 |
 | **Total** | **63** |
 
 ---
 
-## 🧬 Ancestro Común (1)
+##  Ancestro Común (1)
 
 | # | Pokémon | Categoría |
 |---|---------|-----------|
@@ -28,7 +28,7 @@
 
 ---
 
-## 🩸 Depredación Voraz & Carnicería (19)
+##  Depredación Voraz & Carnicería (19)
 
 | # | Pokémon | Categoría |
 |---|---------|-----------|
@@ -54,7 +54,7 @@
 
 ---
 
-## 🧬 Horror Corporal & Mutación (8)
+##  Horror Corporal & Mutación (8)
 
 | # | Pokémon | Categoría |
 |---|---------|-----------|
@@ -69,7 +69,7 @@
 
 ---
 
-## 🧠 Horror Psíquico & Predación Mental (3)
+##  Horror Psíquico & Predación Mental (3)
 
 | # | Pokémon | Categoría |
 |---|---------|-----------|
@@ -79,7 +79,7 @@
 
 ---
 
-## 👻 Manifestación Espectral & Maldición (8)
+##  Manifestación Espectral & Maldición (8)
 
 | # | Pokémon | Categoría |
 |---|---------|-----------|
@@ -94,7 +94,7 @@
 
 ---
 
-## 🌌 Origen Cósmico & Ultraterreno (3)
+##  Origen Cósmico & Ultraterreno (3)
 
 | # | Pokémon | Categoría |
 |---|---------|-----------|
@@ -104,7 +104,7 @@
 
 ---
 
-## 🍄 Parasitismo & Simbiosis Hostil (4)
+##  Parasitismo & Simbiosis Hostil (4)
 
 | # | Pokémon | Categoría |
 |---|---------|-----------|
@@ -115,11 +115,11 @@
 
 ---
 
-## ☣️ Toxicidad & Polución Letal (9)
+##  Toxicidad & Polución Letal (9)
 
 | # | Pokémon | Categoría |
 |---|---------|-----------|
-| #0029 | Nidoran♀ | Toxicidad & Polución Letal |
+| #0029 | Nidoran | Toxicidad & Polución Letal |
 | #0044 | Gloom | Toxicidad & Polución Letal |
 | #0045 | Vileplume | Toxicidad & Polución Letal |
 | #0088 | Grimer | Toxicidad & Polución Letal |
@@ -131,7 +131,7 @@
 
 ---
 
-## ☠️ Tragedia Biológica & Fatalidad (8)
+##  Tragedia Biológica & Fatalidad (8)
 
 | # | Pokémon | Categoría |
 |---|---------|-----------|
@@ -146,7 +146,7 @@
 
 ---
 
-## 📋 Lista Ordenada por Pokédex (63 especímenes)
+##  Lista Ordenada por Pokédex (63 especímenes)
 
 | # | Pokémon | Categoría |
 |---|---------|-----------|
@@ -159,7 +159,7 @@
 | #0020 | Raticate | Depredación Voraz & Carnicería |
 | #0024 | Arbok | Depredación Voraz & Carnicería |
 | #0028 | Sandslash | Depredación Voraz & Carnicería |
-| #0029 | Nidoran♀ | Toxicidad & Polución Letal |
+| #0029 | Nidoran | Toxicidad & Polución Letal |
 | #0034 | Nidoking | Depredación Voraz & Carnicería |
 | #0035 | Clefairy | Origen Cósmico & Ultraterreno |
 | #0036 | Clefable | Origen Cósmico & Ultraterreno |

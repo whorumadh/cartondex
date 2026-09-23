@@ -17,6 +17,7 @@ interface PokemonCardProps {
   onToggleOwned: (specimenId: string, currentOwned: boolean) => void;
   onOpenCardModal: (specimen: Specimen) => void;
   isPriority?: boolean;
+  canEdit?: boolean;
 }
 
 // Colores según tipo elemental
@@ -44,6 +45,7 @@ export function PokemonCard({
   onToggleOwned,
   onOpenCardModal,
   isPriority = false,
+  canEdit = false,
 }: PokemonCardProps) {
   const isOwned = !!collectionItem?.owned;
   const categoryInfo = HORROR_CATEGORIES[specimen.category];
@@ -75,27 +77,48 @@ export function PokemonCard({
           )}
         </div>
 
-        {/* Checkbox "En Binder" */}
-        <button
-          onClick={() => onToggleOwned(specimen.id, isOwned)}
-          title={isOwned ? 'Quitar del binder' : 'Marcar como en mi binder'}
-          className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold border transition cursor-pointer ${
-            isOwned
-              ? 'bg-emerald-500 text-zinc-950 border-emerald-400 font-bold shadow-md shadow-emerald-950/50'
-              : 'bg-zinc-900/80 text-zinc-400 border-zinc-700/80 hover:text-zinc-200 hover:border-zinc-600'
-          }`}
-        >
-          <div
-            className={`w-4 h-4 rounded flex items-center justify-center border transition ${
+        {/* Checkbox "En Binder" (Editable solo si es Admin) */}
+        {canEdit ? (
+          <button
+            onClick={() => onToggleOwned(specimen.id, isOwned)}
+            title={isOwned ? 'Quitar del binder' : 'Marcar como en mi binder'}
+            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold border transition cursor-pointer ${
               isOwned
-                ? 'bg-zinc-950 border-zinc-950 text-emerald-400'
-                : 'border-zinc-500 bg-transparent'
+                ? 'bg-emerald-500 text-zinc-950 border-emerald-400 font-bold shadow-md shadow-emerald-950/50'
+                : 'bg-zinc-900/80 text-zinc-400 border-zinc-700/80 hover:text-zinc-200 hover:border-zinc-600'
             }`}
           >
-            {isOwned && <Check className="w-3 h-3 stroke-[3]" />}
+            <div
+              className={`w-4 h-4 rounded flex items-center justify-center border transition ${
+                isOwned
+                  ? 'bg-zinc-950 border-zinc-950 text-emerald-400'
+                  : 'border-zinc-500 bg-transparent'
+              }`}
+            >
+              {isOwned && <Check className="w-3 h-3 stroke-[3]" />}
+            </div>
+            <span>{isOwned ? 'En Binder' : 'Tengo'}</span>
+          </button>
+        ) : (
+          <div
+            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold border ${
+              isOwned
+                ? 'bg-emerald-950/70 text-emerald-300 border-emerald-500/50'
+                : 'bg-zinc-900/80 text-zinc-500 border-zinc-800'
+            }`}
+          >
+            <div
+              className={`w-3.5 h-3.5 rounded flex items-center justify-center border ${
+                isOwned
+                  ? 'bg-emerald-500 border-emerald-400 text-zinc-950'
+                  : 'border-zinc-700 bg-transparent'
+              }`}
+            >
+              {isOwned && <Check className="w-2.5 h-2.5 stroke-[3]" />}
+            </div>
+            <span>{isOwned ? 'En Colección' : 'Falta'}</span>
           </div>
-          <span>{isOwned ? 'En Binder' : 'Tengo'}</span>
-        </button>
+        )}
       </div>
 
       {/* Arte oficial del Pokémon */}
@@ -210,7 +233,13 @@ export function PokemonCard({
             className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-xs font-semibold text-zinc-200 hover:text-white transition cursor-pointer"
           >
             <Layers className="w-3.5 h-3.5 text-red-400" />
-            <span>{hasSpecificCard ? 'Cambiar Tarjeta / Ver Precios' : 'Elegir Tarjeta & Precios'}</span>
+            <span>
+              {canEdit
+                ? hasSpecificCard
+                  ? 'Cambiar Tarjeta / Ver Precios'
+                  : 'Elegir Tarjeta & Precios'
+                : 'Ver Tarjetas & Precios'}
+            </span>
           </button>
         </div>
       </div>

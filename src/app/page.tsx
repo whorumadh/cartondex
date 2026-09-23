@@ -15,9 +15,11 @@ import { CategoryFilters, CollectionFilterStatus } from '@/components/CategoryFi
 import { PokemonCard } from '@/components/PokemonCard';
 import { CardSelectorModal } from '@/components/CardSelectorModal';
 import { EmptyGenState } from '@/components/EmptyGenState';
-import { Loader2, SearchX } from 'lucide-react';
+import { Loader2, SearchX, ShieldCheck, LogOut } from 'lucide-react';
+import { useAdminAuth } from '@/hooks/useAdminAuth';
 
 export default function BestiaryPage() {
+  const { user, isAdmin, signOut } = useAdminAuth();
   const [currentGen, setCurrentGen] = useState<number>(1);
   const [selectedCategory, setSelectedCategory] = useState<HorrorCategoryName | 'all'>('all');
   const [statusFilter, setStatusFilter] = useState<CollectionFilterStatus>('all');
@@ -89,6 +91,37 @@ export default function BestiaryPage() {
 
   return (
     <div className="min-h-screen bg-black text-zinc-100 flex flex-col font-sans selection:bg-red-500 selection:text-white">
+      {/* Barra de Modo Administrador (Visible unicamente para el administrador autenticado) */}
+      {isAdmin && (
+        <aside
+          aria-label="Barra de Administracion"
+          className="sticky top-0 z-50 w-full bg-red-950/90 backdrop-blur border-b border-red-800/80 px-4 sm:px-6 py-2 flex items-center justify-between shadow-lg shadow-black/60"
+        >
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-red-400 shrink-0" />
+            <span className="text-xs font-semibold text-red-100">
+              Modo Administrador Activo
+            </span>
+            {user?.email && (
+              <span className="hidden sm:inline font-mono text-[11px] text-red-300/80">
+                ({user.email})
+              </span>
+            )}
+            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-red-900/60 text-red-200 border border-red-700/60">
+              Edicion Habilitada
+            </span>
+          </div>
+
+          <button
+            onClick={() => signOut()}
+            className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-red-900/50 hover:bg-red-800/80 border border-red-700/60 text-xs font-semibold text-red-100 hover:text-white transition cursor-pointer"
+          >
+            <LogOut className="w-3.5 h-3.5" />
+            <span>Cerrar Sesion</span>
+          </button>
+        </aside>
+      )}
+
       {/* Header con estadísticas globales (Progreso, USD, MXN) */}
       <Header
         totalSpecimens={GEN1_SPECIMENS.length}
@@ -163,6 +196,7 @@ export default function BestiaryPage() {
                       onToggleOwned={toggleOwned}
                       onOpenCardModal={(spec) => setActiveModalSpecimen(spec)}
                       isPriority={index < 4}
+                      canEdit={isAdmin}
                     />
                   ))}
                 </div>
@@ -196,6 +230,7 @@ export default function BestiaryPage() {
         onClose={() => setActiveModalSpecimen(null)}
         onAssignCard={assignCard}
         onUnassignCard={unassignCard}
+        canEdit={isAdmin}
       />
     </div>
   );
