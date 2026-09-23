@@ -11,9 +11,8 @@ import { Lock, Mail, Key, ShieldCheck, ArrowRight, Loader2, AlertCircle } from '
 
 export default function AccesoBestiarioPage() {
   const router = useRouter();
-  const { user, isAdmin, loading: authLoading, signIn, signUp, signOut } = useAdminAuth();
+  const { user, isAdmin, loading: authLoading, signIn, signOut } = useAdminAuth();
 
-  const [mode, setMode] = useState<'login' | 'register'>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -71,28 +70,14 @@ export default function AccesoBestiarioPage() {
     setIsSubmitting(true);
 
     try {
-      if (mode === 'login') {
-        const result = await signIn(email, password);
-        if (!result.success) {
-          setErrorMsg(result.error || 'Credenciales invalidas');
-        } else {
-          setSuccessMsg('Acceso concedido. Redirigiendo...');
-          setTimeout(() => {
-            router.push('/');
-          }, 1000);
-        }
+      const result = await signIn(email, password);
+      if (!result.success) {
+        setErrorMsg(result.error || 'Credenciales invalidas');
       } else {
-        const result = await signUp(email, password);
-        if (!result.success) {
-          setErrorMsg(result.error || 'No se pudo crear la cuenta');
-        } else {
-          setSuccessMsg(
-            'Cuenta registrada con exito. Si Supabase requiere confirmacion, revisa tu bandeja de entrada.'
-          );
-          setTimeout(() => {
-            router.push('/');
-          }, 1500);
-        }
+        setSuccessMsg('Acceso concedido. Redirigiendo...');
+        setTimeout(() => {
+          router.push('/');
+        }, 800);
       }
     } finally {
       setIsSubmitting(false);
@@ -118,38 +103,6 @@ export default function AccesoBestiarioPage() {
           </p>
         </div>
 
-        {/* Selector de Modo */}
-        <div className="grid grid-cols-2 gap-1 p-1 bg-zinc-900 border border-zinc-800 rounded-xl mb-6">
-          <button
-            type="button"
-            onClick={() => {
-              setMode('login');
-              setErrorMsg(null);
-            }}
-            className={`py-2 text-xs font-semibold rounded-lg transition cursor-pointer ${
-              mode === 'login'
-                ? 'bg-zinc-800 text-white shadow-sm'
-                : 'text-zinc-400 hover:text-zinc-200'
-            }`}
-          >
-            Iniciar Sesion
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setMode('register');
-              setErrorMsg(null);
-            }}
-            className={`py-2 text-xs font-semibold rounded-lg transition cursor-pointer ${
-              mode === 'register'
-                ? 'bg-zinc-800 text-white shadow-sm'
-                : 'text-zinc-400 hover:text-zinc-200'
-            }`}
-          >
-            Registrar Cuenta
-          </button>
-        </div>
-
         {/* Mensajes de Alerta */}
         {errorMsg && (
           <div className="mb-4 p-3 rounded-xl bg-red-950/60 border border-red-500/40 text-red-300 text-xs flex items-center gap-2">
@@ -165,7 +118,7 @@ export default function AccesoBestiarioPage() {
           </div>
         )}
 
-        {/* Formulario */}
+        {/* Formulario de Login Unico */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-xs font-semibold text-zinc-400 mb-1.5">
@@ -211,10 +164,8 @@ export default function AccesoBestiarioPage() {
                 <Loader2 className="w-4 h-4 animate-spin" />
                 <span>Verificando...</span>
               </>
-            ) : mode === 'login' ? (
-              <span>Acceder al Panel</span>
             ) : (
-              <span>Crear Cuenta de Administrador</span>
+              <span>Acceder al Panel</span>
             )}
           </button>
         </form>
