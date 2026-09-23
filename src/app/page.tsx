@@ -15,8 +15,7 @@ import { CategoryFilters, CollectionFilterStatus } from '@/components/CategoryFi
 import { PokemonCard } from '@/components/PokemonCard';
 import { CardSelectorModal } from '@/components/CardSelectorModal';
 import { EmptyGenState } from '@/components/EmptyGenState';
-import { SupabaseSetupModal } from '@/components/SupabaseSetupModal';
-import { Loader2, SearchX, Sparkles, AlertTriangle } from 'lucide-react';
+import { Loader2, SearchX } from 'lucide-react';
 
 export default function BestiaryPage() {
   const [currentGen, setCurrentGen] = useState<number>(1);
@@ -24,8 +23,7 @@ export default function BestiaryPage() {
   const [statusFilter, setStatusFilter] = useState<CollectionFilterStatus>('all');
   const [searchTerm, setSearchTerm] = useState<string>('');
 
-  // Modales
-  const [isSetupModalOpen, setIsSetupModalOpen] = useState(false);
+  // Modal de tarjeta seleccionada
   const [activeModalSpecimen, setActiveModalSpecimen] = useState<Specimen | null>(null);
 
   // Hook de colección en Supabase
@@ -91,40 +89,15 @@ export default function BestiaryPage() {
 
   return (
     <div className="min-h-screen bg-black text-zinc-100 flex flex-col font-sans selection:bg-red-500 selection:text-white">
-      {/* Header con estadísticas globales y estado de conexión */}
+      {/* Header con estadísticas globales (Progreso, USD, MXN) */}
       <Header
         totalSpecimens={GEN1_SPECIMENS.length}
         ownedCount={stats.ownedCount}
         totalUsd={stats.totalUsd}
-        totalEur={stats.totalEur}
-        isConfigured={isConfigured}
-        onOpenSetupModal={() => setIsSetupModalOpen(true)}
       />
 
       {/* Contenido Principal */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* Banner informativo si falta configurar Supabase */}
-        {!isConfigured && (
-          <div className="p-4 rounded-2xl bg-amber-950/40 border border-amber-500/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-amber-300">
-            <div className="flex items-center gap-3">
-              <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0" />
-              <div>
-                <p className="text-xs sm:text-sm font-semibold text-zinc-100">
-                  Base de datos de Supabase no configurada aún
-                </p>
-                <p className="text-xs text-amber-300/80 mt-0.5">
-                  Las marcas de tu binder se mantendrán durante tu sesión actual. Agrega tus llaves en <code className="font-mono text-white">.env.local</code> para guardar permanentemente en PostgreSQL.
-                </p>
-              </div>
-            </div>
-            <button
-              onClick={() => setIsSetupModalOpen(true)}
-              className="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs transition cursor-pointer shrink-0"
-            >
-              Ver Instrucciones SQL
-            </button>
-          </div>
-        )}
 
         {/* 1. Selector de Generaciones */}
         <section aria-label="Selector de Generaciones">
@@ -223,13 +196,6 @@ export default function BestiaryPage() {
         onClose={() => setActiveModalSpecimen(null)}
         onAssignCard={assignCard}
         onUnassignCard={unassignCard}
-      />
-
-      {/* Modal de Configuración de Supabase */}
-      <SupabaseSetupModal
-        isOpen={isSetupModalOpen}
-        onClose={() => setIsSetupModalOpen(false)}
-        isConfigured={isConfigured}
       />
     </div>
   );

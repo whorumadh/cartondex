@@ -8,7 +8,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Specimen, CollectionItem } from '@/types';
 import { HORROR_CATEGORIES } from '@/data/categories';
-import { formatCurrency } from '@/lib/utils';
+import { formatCurrency, convertUsdToMxn } from '@/lib/utils';
 import { Check, Layers, ExternalLink, Sparkles, Tag } from 'lucide-react';
 
 interface PokemonCardProps {
@@ -186,14 +186,14 @@ export function PokemonCard({
                 </div>
               </div>
 
-              {/* Precios guardados */}
+              {/* Precios guardados (USD & MXN) */}
               <div className="text-right shrink-0">
                 <span className="block text-xs font-mono font-bold text-emerald-400">
                   {formatCurrency(collectionItem.price_usd, 'USD')}
                 </span>
-                {collectionItem.price_eur && (
-                  <span className="block text-[10px] font-mono text-zinc-400">
-                    {formatCurrency(collectionItem.price_eur, 'EUR')}
+                {collectionItem.price_usd && (
+                  <span className="block text-[10px] font-mono text-amber-400/90">
+                    {formatCurrency(convertUsdToMxn(collectionItem.price_usd), 'MXN')}
                   </span>
                 )}
               </div>

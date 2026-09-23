@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { Specimen, CollectionItem, TcgLanguage } from '@/types';
 import { useTcgCards } from '@/hooks/useTcgCards';
 import { extractUsdPrice, extractEurPrice } from '@/lib/tcgdex';
-import { formatCurrency } from '@/lib/utils';
+import { formatCurrency, convertUsdToMxn } from '@/lib/utils';
 import {
   X,
   Search,
@@ -263,14 +263,14 @@ export function CardSelectorModal({
                   </div>
                 </div>
 
-                {/* Precios de Mercado en Vivo */}
+                {/* Precios de Mercado en Vivo (USD y MXN) */}
                 <div className="w-full p-3.5 rounded-xl bg-black/60 border border-zinc-800 space-y-2">
                   <div className="flex items-center justify-between text-xs font-semibold text-zinc-400 border-b border-zinc-800 pb-2">
                     <span className="flex items-center gap-1.5">
                       <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
                       Cotización de Mercado
                     </span>
-                    <span className="text-[10px] text-zinc-500">TCGPlayer / Cardmarket</span>
+                    <span className="text-[10px] text-zinc-500">TCGPlayer</span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2 pt-1">
@@ -287,17 +287,15 @@ export function CardSelectorModal({
                       )}
                     </div>
 
-                    {/* Cardmarket EUR */}
+                    {/* Aprox MXN (Pesos Mexicanos) */}
                     <div className="p-2.5 rounded-lg bg-zinc-900/90 border border-zinc-800 text-center">
-                      <span className="block text-[10px] text-zinc-400 font-medium">Cardmarket (EUR)</span>
-                      <span className="block text-sm font-mono font-extrabold text-cyan-400 mt-0.5">
-                        {formatCurrency(currentEurPrice, 'EUR')}
+                      <span className="block text-[10px] text-zinc-400 font-medium">Aprox. (MXN)</span>
+                      <span className="block text-sm font-mono font-extrabold text-amber-400 mt-0.5">
+                        {formatCurrency(convertUsdToMxn(currentUsdPrice), 'MXN')}
                       </span>
-                      {cardDetail.pricing?.cardmarket?.low && (
-                        <span className="block text-[9px] text-zinc-500 mt-0.5">
-                          Min: {formatCurrency(cardDetail.pricing.cardmarket.low, 'EUR')}
-                        </span>
-                      )}
+                      <span className="block text-[9px] text-zinc-500 mt-0.5">
+                        ~$20 MXN / USD
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -427,7 +425,7 @@ export function CardSelectorModal({
 
         {/* Footer */}
         <div className="p-4 border-t border-zinc-800/80 bg-zinc-950 flex items-center justify-between text-xs text-zinc-500">
-          <span>Fuente de datos: TCGdex API • Precios en tiempo real de TCGPlayer &amp; Cardmarket</span>
+          <span>Fuente de datos: TCGdex API • Precios en tiempo real de TCGPlayer</span>
           <button
             onClick={onClose}
             className="px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-200 transition cursor-pointer"
