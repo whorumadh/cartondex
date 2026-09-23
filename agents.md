@@ -27,6 +27,12 @@
    - **Gen 1 (Kanto):** Catalogo completo de 63 especimenes distribuidos en las 9 categorias oficiales detalladas a continuacion.
    - **Gen 2 a 9:** Listadas en la interfaz para navegacion, pero estrictamente vacias (sin prellenado automatico) hasta que se realice la clasificacion oficial.
 
+6. **CONTROL DE VERSIONES Y COMMITS:**
+   - **PROHIBICION ESTRICTA DE COMMITS Y PUSH POR PARTE DEL AGENTE:**
+     - El agente tiene estrictamente prohibido ejecutar `git commit`, `git push` o alterar el historial del repositorio.
+     - El rol del agente es unicamente dejar los archivos modificados, limpios y probados en el espacio de trabajo local.
+     - El usuario es el unico autorizado para realizar commits y push cuando lo juzgue necesario.
+
 ---
 
 # Taxonomia y Categorias de Horror Pokemon (Gen 1)
